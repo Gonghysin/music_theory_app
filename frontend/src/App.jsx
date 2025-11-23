@@ -29,7 +29,8 @@ const Latex = ({ children, className = "" }) => {
 };
 
 function App() {
-  const API_BASE = 'http://localhost:8000/api';
+  // 在 Vercel 生产环境中，后端部署在 /api 下，使用相对路径即可避免跨域和硬编码
+  const API_BASE = import.meta.env.PROD ? '/api' : 'http://localhost:8000/api';
   
   const [activeTab, setActiveTab] = useState('progression'); 
 
